@@ -1,5 +1,6 @@
 import React from "react";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import RatingStar from "../../Components/RatingStar/RatingStar";
 const ScrollProducts = ({ products }) => {
   console.log(products);
   return (
@@ -27,6 +28,7 @@ const ScrollProducts = ({ products }) => {
                   currency: "USD",
                 })}
               </p>
+              <RatingStar rating={product.rating.rate} />
             </div>
           );
         })}

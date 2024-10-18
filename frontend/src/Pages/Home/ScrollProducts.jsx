@@ -3,7 +3,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 const ScrollProducts = ({ products }) => {
   console.log(products);
   return (
-    <div className="flex overflow-x-scroll gap-5 p-3 pl-5 scrollbar">
+    <div className="flex overflow-x-scroll gap-5 p-3 px-5 scrollbar">
       {products.length > 0 &&
         products.map((product) => {
           return (
@@ -31,7 +31,7 @@ const ScrollProducts = ({ products }) => {
           );
         })}
       {products.length > 4 && (
-        <div className="min-w-48 p-5 h-58 shadow-md rounded-3xl bg-white flex justify-center items-center flex-col text-center">
+        <div className="min-w-48 p-5 h-58 shadow-md rounded-2xl cursor-pointer shadow-pink-400 bg-white flex justify-center items-center flex-col text-center">
           <ArrowForwardIcon fontSize="large" />
           <p>More</p>
         </div>

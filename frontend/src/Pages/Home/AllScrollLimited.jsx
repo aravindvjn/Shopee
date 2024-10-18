@@ -5,7 +5,7 @@ const AllScrollLimited = ({ categories }) => {
   return (
     <div>
       {categories.length > 0 &&
-        categories.map((category) => <LimitProduct category={category} />)}
+        categories.map((category,index) => <LimitProduct key={index} category={category} />)}
     </div>
   );
 };

@@ -7,7 +7,7 @@ import AllScrollLimited from './AllScrollLimited'
 const Home = () => {
   const [categories, setCategories] = useState([]);
   return (
-    <div className='bg-pink-50 min-h-screen'>
+    <div className='bg-pink-50 min-h-screen pb-16'>
     <Header />
     <Search />
     <Category categories={categories} setCategories={setCategories} />

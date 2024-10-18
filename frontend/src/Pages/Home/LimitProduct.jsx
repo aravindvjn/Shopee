@@ -13,7 +13,6 @@ const LimitProduct = ({category}) => {
         )
           .then((res) => res.json())
           .then((json) => setProducts(json));
-        console.log(products);
       } catch (err) {
         console.error("Error in fetching limit products");
       }
@@ -23,7 +22,7 @@ const LimitProduct = ({category}) => {
   return (
     <>
       <div>
-        {category && <h1 className="pl-5 font-semibold capitalize">{category}</h1>}
+        {category && <h1 className="pl-5 font-bold capitalize">{category}</h1>}
         {products.length > 0 && <ScrollProducts products={products} />}
       </div>
     </>

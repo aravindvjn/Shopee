@@ -20,14 +20,14 @@ const Category = ({ categories, setCategories }) => {
   }, []);
   return (
     <>
-      <h1 className="mt-4 pl-5 mb-0 font-semibold">Categories</h1>
+      <h1 className="mt-4 pl-5 mb-0 font-bold">Categories</h1>
       <div className="flex my-2 py-2 gap-2 overflow-x-scroll scrollbar pl-3">
         {categories.length > 0 &&
           categories.map((category, index) => {
             return (
               <button
                 key={index}
-                className="capitalize px-5 py-2 border rounded-full whitespace-nowrap shadow-md bg-white"
+                className="capitalize px-5 py-2 border rounded-full shadow-pink-400 whitespace-nowrap shadow-sm bg-white"
               >
                 {category}
               </button>

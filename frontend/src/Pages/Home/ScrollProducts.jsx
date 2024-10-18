@@ -8,7 +8,7 @@ const ScrollProducts = ({ products }) => {
           return (
             <div
               key={product.id}
-              className="min-w-48 p-5 shadow-md rounded-3xl bg-white"
+              className="min-w-52 w-52 p-5 shadow-md rounded-3xl bg-white cursor-pointer"
             >
               <div className="h-36">
                 <img

@@ -21,7 +21,7 @@ const Category = ({ categories, setCategories }) => {
   return (
     <>
       <h1 className="mt-4 pl-5 mb-0 font-bold">Categories</h1>
-      <div className="flex my-2 py-2 gap-2 overflow-x-scroll scrollbar pl-3">
+      <div className="flex my-2 py-2 gap-2 overflow-x-scroll scrollbar px-5">
         {categories.length > 0 &&
           categories.map((category, index) => {
             return (

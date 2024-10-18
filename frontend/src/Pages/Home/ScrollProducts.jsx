@@ -28,7 +28,7 @@ const ScrollProducts = ({ products }) => {
                   currency: "USD",
                 })}
               </p>
-              <RatingStar rating={product.rating.rate} />
+             <div className="flex gap-2 items-end"> <RatingStar rating={product.rating.rate} /> <p style={{fontSize:'10px'}} className="opacity-30 translate-y-0.5" >{product.rating.count}</p></div>
             </div>
           );
         })}

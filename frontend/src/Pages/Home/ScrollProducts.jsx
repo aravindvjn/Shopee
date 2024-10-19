@@ -1,8 +1,10 @@
 import React from "react";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import RatingStar from "../../Components/RatingStar/RatingStar";
+import { useNavigate } from "react-router-dom";
 
 const ScrollProducts = ({ products }) => {
+  const navigate = useNavigate();
   return (
     <div className="flex overflow-x-scroll gap-5 p-3 px-5 scrollbar">
       {products.length > 0 &&
@@ -11,6 +13,10 @@ const ScrollProducts = ({ products }) => {
             <div
               key={product.id}
               className="min-w-52 w-52 bg-white p-5 shadow-sm shadow-pink-400 rounded-2xl cursor-pointer"
+              onClick={() => {
+                navigate("/product-details/" + product.id);
+                window.scrollTo(0, 0);
+              }}
             >
               <div className="h-36">
                 <img
@@ -28,7 +34,15 @@ const ScrollProducts = ({ products }) => {
                   currency: "USD",
                 })}
               </p>
-             <div className="flex gap-2 items-end"> <RatingStar rating={product.rating.rate} /> <p style={{fontSize:'8px',transform:'translateY(3px)'}} className="opacity-30" >{product.rating.count}</p></div>
+              <div className="flex gap-2 items-end">
+                <RatingStar rating={product.rating.rate} />{" "}
+                <p
+                  style={{ fontSize: "8px", transform: "translateY(3px)" }}
+                  className="opacity-30"
+                >
+                  {product.rating.count}
+                </p>
+              </div>
             </div>
           );
         })}

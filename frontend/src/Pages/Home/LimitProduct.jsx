@@ -3,7 +3,7 @@ import ScrollProducts from "./ScrollProducts";
 import { apiURL } from "../../Global/Links";
 import ScrollProductsSkelton from "./ScrollProductsSkelton";
 
-const LimitProduct = ({ category }) => {
+const LimitProduct = ({ category , newName =false }) => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const LimitProduct = ({ category }) => {
   return (
     <>
       <div>
-        {category && <h1 className="pl-5 font-bold capitalize">{category}</h1>}
+        {category && <h1 className="pl-5 font-bold capitalize">{newName || category}</h1>}
         {products.length > 0 ? (
           <ScrollProducts products={products} />
         ) : (

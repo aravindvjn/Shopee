@@ -1,8 +1,8 @@
 import React from "react";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import RatingStar from "../../Components/RatingStar/RatingStar";
+
 const ScrollProducts = ({ products }) => {
-  console.log(products);
   return (
     <div className="flex overflow-x-scroll gap-5 p-3 px-5 scrollbar">
       {products.length > 0 &&

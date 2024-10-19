@@ -54,7 +54,7 @@ const Form = ({ page = "Submit",setMessage }) => {
           !input.cpassword
         ) {
           setMessage("Input field cannot be empty");
-        }else if(input.password.length >= 8){
+        }else if(input.password.length < 8){
           setMessage("Password must be at least 8 characters long.")
         } else if (input.password !== input.cpassword) {
           setMessage("Passwords do not match. Please make sure both fields are identical.");

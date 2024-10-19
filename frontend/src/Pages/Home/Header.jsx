@@ -1,10 +1,10 @@
 import React from 'react'
-import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
+
+import Logo from '../../Components/SmallComponents/Logo';
 const Header = () => {
   return (
-    <div className='flex p-5 items-end' >
-      <ShoppingBagIcon fontSize='large' className=' text-pink-600'/>
-      <h1 className='text-pink-600 text-2xl font-bold'>Shopee</h1>
+    <div data-aos="zoom-out" className='flex p-5 items-end' >
+  <Logo />
     </div>
   )
 }

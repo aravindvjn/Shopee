@@ -23,19 +23,27 @@ const Category = ({ categories, setCategories }) => {
     <>
       <h1 className="mt-4 pl-5 mb-0 font-bold">Categories</h1>
       <div className="flex my-2 py-2 gap-2 overflow-x-scroll scrollbar pl-3">
-        {categories.length > 0 ?
-          categories.map((category, index) => {
-            return (
-              <button
-                key={index}
-                className="capitalize px-5 py-2 border rounded-full shadow-pink-400 whitespace-nowrap shadow-sm h-11 bg-white"
-              >
-                {category}
-              </button>
-            );
-          }) : Array(4).fill().map((_,index)=>{
-            return <Fetching class1="capitalize h-11 border rounded-full shadow-pink-400 min-w-32 whitespace-nowrap shadow-sm" key={index} />
-          })}
+        {categories.length > 0
+          ? categories.map((category, index) => {
+              return (
+                <button
+                  key={index}
+                  className="capitalize px-5 py-2 border rounded-full shadow-pink-400 whitespace-nowrap shadow-sm h-11 bg-white"
+                >
+                  {category}
+                </button>
+              );
+            })
+          : Array(4)
+              .fill()
+              .map((_, index) => {
+                return (
+                  <Fetching
+                    class1="capitalize h-11 border rounded-full shadow-pink-400 min-w-32 whitespace-nowrap shadow-sm"
+                    key={index}
+                  />
+                );
+              })}
       </div>
     </>
   );

@@ -13,7 +13,7 @@ const Logout = () => {
         setUser(null);
         window.scrollTo(0, 0);
       }}
-      className="text-white bg-red-600 rounded-md py-1  px-3"
+      className="text-white font-semibold bg-red-600 rounded-lg py-2  px-4"
     >
       Logout
     </button>

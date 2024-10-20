@@ -12,9 +12,8 @@ const UserProfile = ({ name, email }) => {
 const Names = ({ text, value }) => {
   return (
     <div>
-      <p>{text}</p>
-      <p className="shadow-sm rounded-md border border-pink-400 shadow-pink-400 min-w-1/2  p-2">
-        {value}
+      <p className="shadow-sm rounded-md border border-pink-400 min-w-1/2 mt-3 p-2">
+        <em>{text} : </em> <span className="font-semibold">{value}</span>
       </p>
     </div>
   );

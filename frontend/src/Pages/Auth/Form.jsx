@@ -5,10 +5,10 @@ import SwitchPage from "./SwitchPage";
 import { authURL } from "../../Global/Links";
 import { useNavigate } from "react-router-dom";
 
-const Form = ({ page = "Submit",setMessage }) => {
-  const navigate = useNavigate()
+const Form = ({ page = "Submit", setMessage, setLoading }) => {
+  const navigate = useNavigate();
   const [input, setInput] = useState({
-   username: "",
+    username: "",
     email: "",
     password: "",
     cpassword: "",
@@ -21,6 +21,7 @@ const Form = ({ page = "Submit",setMessage }) => {
   };
   const submitHandler = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       if (page === "login") {
         if (!input.email || !input.password) {
@@ -41,9 +42,11 @@ const Form = ({ page = "Submit",setMessage }) => {
 
           if (response.ok) {
             localStorage.setItem("token", data.token);
-            navigate("/")
+            navigate("/");
+            setLoading(false);
           } else {
             setMessage("Registration failed: " + data.message);
+            setLoading(false);
           }
         }
       } else {
@@ -54,10 +57,12 @@ const Form = ({ page = "Submit",setMessage }) => {
           !input.cpassword
         ) {
           setMessage("Input field cannot be empty");
-        }else if(input.password.length < 8){
-          setMessage("Password must be at least 8 characters long.")
+        } else if (input.password.length < 8) {
+          setMessage("Password must be at least 8 characters long.");
         } else if (input.password !== input.cpassword) {
-          setMessage("Passwords do not match. Please make sure both fields are identical.");
+          setMessage(
+            "Passwords do not match. Please make sure both fields are identical."
+          );
         } else {
           const response = await fetch(authURL + "register", {
             method: "POST",
@@ -75,9 +80,11 @@ const Form = ({ page = "Submit",setMessage }) => {
 
           if (response.ok) {
             localStorage.setItem("token", data.token);
-            navigate("/")
+            navigate("/");
+            setLoading(false);
           } else {
             setMessage("Registration failed: " + data.message);
+            setLoading(false);
           }
         }
       }
@@ -119,7 +126,7 @@ const Form = ({ page = "Submit",setMessage }) => {
         />
         <Input
           input={input}
-          type="text"
+          type="password"
           placeholder="Password"
           name="password"
           onChangeHandler={onChangeHandler}
@@ -127,13 +134,13 @@ const Form = ({ page = "Submit",setMessage }) => {
         {page !== "login" && (
           <Input
             input={input}
-            type="text"
+            type="password"
             placeholder="Confirm Password"
             name="cpassword"
             onChangeHandler={onChangeHandler}
           />
         )}
-        <button className="uppercase rounded-lg bg-pink-700 text-white p-2 hover:bg-pink-300">
+        <button className="uppercase rounded-lg bg-pink-700 text-white p-2 hover:bg-pink-300 border">
           {page}
         </button>
         <SwitchPage page={page} />

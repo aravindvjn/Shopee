@@ -13,7 +13,6 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
 //database connnection
 const pool = new Pool({
   connectionString: process.env.DB_URL,
@@ -24,11 +23,39 @@ pool
   .then(() => console.log("Connected to the database successfully!"))
   .catch((err) => console.error("Connection error", err.stack));
 
+pool.on("error", (err, client) => {
+  console.error("Unexpected error on idle client", err);
+  process.exit(-1); 
+});
+
 //Root route
 app.get("/", (req, res) => {
   res.send("Hai, I am Shopee API");
 });
 
+//Middle Wares for error handling
+app.use((err, req, res, next) => {
+  if (err) {
+    console.log("Error Present:", err.message);
+  }
+
+  next(err);
+});
+
+// Middleware to authenticate the token
+const authenticateToken = (req, res, next) => {
+  try {
+    const token = req.headers["authorization"]?.split(" ")[1];
+    if (!token) return res.sendStatus(401);
+    jwt.verify(token, process.env.SECRET_KEY, (err, user) => {
+      if (err) return res.sendStatus(403);
+      req.user = user;
+      next();
+    });
+  } catch (err) {
+    console.log("Error in Authentication :", err);
+  }
+};
 //JWT
 const generateToken = (id, email) => {
   return jwt.sign({ id, email }, process.env.SECRET_KEY, { expiresIn: "1h" });
@@ -81,20 +108,6 @@ app.post("/login", async (req, res) => {
   }
 });
 
-// Middleware to authenticate the token
-const authenticateToken = (req, res, next) => {
-  try {
-    const token = req.headers["authorization"]?.split(" ")[1];
-    if (!token) return res.sendStatus(401);
-    jwt.verify(token, process.env.SECRET_KEY, (err, user) => {
-      if (err) return res.sendStatus(403);
-      req.user = user;
-      next();
-    });
-  } catch (err) {
-    console.log("Error in Authentication :", err);
-  }
-};
 //get user details
 app.get("/user-data", authenticateToken, async (req, res) => {
   try {

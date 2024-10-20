@@ -2,6 +2,7 @@ import React from "react";
 import Logout from "./Logout";
 
 import UserProfile from "./UserProfile";
+import AccountSection from "./AccountSection";
 const UserDetails = ({
   id = 0,
   name = "Unknown",
@@ -19,7 +20,10 @@ const UserDetails = ({
           year: "numeric",
         })}
       </h1>
-      <Logout />
+      <AccountSection id={id} />
+      <div className="text-center">
+        <Logout />
+      </div>
     </div>
   );
 };

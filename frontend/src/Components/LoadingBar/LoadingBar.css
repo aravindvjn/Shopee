@@ -1,0 +1,27 @@
+.loading-bar-parent{
+    backdrop-filter: blur(2px);
+}
+.loading-bar {
+    width: 0;
+    height: 100%;
+    animation: load 3s forwards;
+}
+
+
+@keyframes load {
+    0% {
+        width: 0%;
+    }
+
+    50% {
+        width: 50%;
+    }
+
+    80% {
+        width: 80%;
+    }
+
+    100% {
+        width: 90%;
+    }
+}

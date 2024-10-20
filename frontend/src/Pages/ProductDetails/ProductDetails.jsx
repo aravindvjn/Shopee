@@ -3,6 +3,7 @@ import { useLocation, useParams } from "react-router-dom";
 import { apiURL } from "../../Global/Links";
 import Header from "./Header";
 import ProductBody from "./ProductBody";
+import ProductDetailsSkelton from "./ProductDetailsSkelton";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -22,7 +23,7 @@ const ProductDetails = () => {
   return (
     <div className="bg-pink-50 min-h-screen pb-14">
       <Header />
-      {product && <ProductBody {...product} />}
+      {product ? <ProductBody {...product} /> : <ProductDetailsSkelton />}
     </div>
   );
 };

@@ -12,14 +12,13 @@ export const fetchUserData = (token) => {
       if (response.ok) {
         return response.json();
       } else {
-        throw new Error("Failed to fetch user data");
+        return null;
       }
     })
     .then((data) => {
       return data;
     })
     .catch((error) => {
-      console.error("Error fetching user data:", error.message);
-      throw error;
+      console.error("Error fetching user data:", error);
     });
 };

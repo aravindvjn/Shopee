@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const PleaseLogin = () => {
   const navigate = useNavigate();
   return (
-    <div className="flex justify-center items-center flex-col">
+    <div className="flex justify-center items-center flex-col min-h-screen bg-pink-50">
       <h1>Please Login First</h1>
       <div className="flex"
         onClick={() => {

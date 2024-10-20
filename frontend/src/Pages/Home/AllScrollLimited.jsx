@@ -12,7 +12,7 @@ const AllScrollLimited = ({ categories }) => {
             <LimitProduct key={index} category={category} />
           ))
         : <>
-        <Fetching class1="h-5 my-2 mx-5 w-1/3" />
+        <Fetching class1="h-5 rounded-md my-2 mx-5 w-1/3" />
         <ScrollProductsSkelton /></> }
     </div>
   );

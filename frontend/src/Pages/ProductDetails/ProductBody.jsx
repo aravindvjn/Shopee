@@ -14,7 +14,7 @@ const ProductBody = ({
 }) => {
   return (
     <>
-      <div data-aos="zoom-out" className="p-5 pt-16 sm:p-10 lg:p-16 sm:pt-20 lg:pt-24">
+      <div data-aos="fade-out" className="p-5 pt-16 sm:p-10 lg:p-16 sm:pt-20 lg:pt-24">
         <div className="p-10 bg-white rounded-lg shadow-sm shadow-pink-200 max-w-100 sm:w-2/3 lg:w-1/3 m-auto sm:rounded-2xl flex justify-center items-center">
           <img
             src={image}

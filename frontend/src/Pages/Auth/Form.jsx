@@ -21,12 +21,13 @@ const Form = ({ page = "Submit", setMessage, setLoading }) => {
   };
   const submitHandler = async (e) => {
     e.preventDefault();
-    setLoading(true);
+ 
     try {
       if (page === "login") {
         if (!input.email || !input.password) {
           setMessage("Invalid Input");
         } else {
+          setLoading(true);
           const response = await fetch(authURL + "login", {
             method: "POST",
             headers: {
@@ -64,6 +65,7 @@ const Form = ({ page = "Submit", setMessage, setLoading }) => {
             "Passwords do not match. Please make sure both fields are identical."
           );
         } else {
+          setLoading(true);
           const response = await fetch(authURL + "register", {
             method: "POST",
             headers: {

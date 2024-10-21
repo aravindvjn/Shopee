@@ -2,8 +2,8 @@ import express from "express";
 import dotenv from "dotenv";
 import pkg from "pg";
 import cors from "cors";
-import authRoutes from "./Routes/auth.js";
-import cartRoutes from "./Routes/cart.js";
+import authRoutes from "./routes/auth.js";
+import cartRoutes from "./routes/cart.js";
 
 dotenv.config();
 const { Pool } = pkg;
@@ -35,8 +35,8 @@ pool.on("error", (err, client) => {
   process.exit(-1);
 });
 // Routes
-// app.use("/", authRoutes);
-// app.use("/cart", cartRoutes);
+app.use("/", authRoutes);
+app.use("/cart", cartRoutes);
 
 // Root route
 app.get("/", (req, res) => {

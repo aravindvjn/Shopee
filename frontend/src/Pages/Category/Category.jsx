@@ -28,7 +28,7 @@ const Category = () => {
           ? products.map((product) => {
               return <Products key={product.id} {...product} width={"full"} />;
             })
-          : Array(5)
+          : Array(6)
               .fill()
               .map((_, index) => {
                 return (

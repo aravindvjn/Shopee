@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
-import { Pool } from 'pg';
+import pkg from "pg";
+const { Pool } = pkg;
 import cors from "cors";
 // import authRoutes from "./routes/auth.js";
 // import cartRoutes from "./routes/cart.js";
@@ -22,12 +23,6 @@ export const pool = new Pool({
   },
 });
 
-// Connecting to the database
-pool
-  .connect()
-  .then(() => console.log("Connected to the database successfully!"))
-  .catch((err) => console.error("Connection error", err.stack));
-
 // Root route
 app.get("/", (req, res) => {
   res.send("Hai, I am Shopee API");
@@ -38,10 +33,10 @@ app.get("/", (req, res) => {
 // app.use("/cart", cartRoutes);
 
 // Error handling middleware
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send("Something went wrong!");
-});
+// app.use((err, req, res, next) => {
+//   console.error(err.stack);
+//   res.status(500).send("Something went wrong!");
+// });
 
 // Listening
 app.listen(PORT, () => {

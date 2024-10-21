@@ -26,10 +26,10 @@ pool
   .then(() => console.log("Connected to the database successfully!"))
   .catch((err) => console.error("Connection error", err.stack));
 
-pool.on("error", (err, client) => {
-  console.error("Unexpected error on idle client", err);
-  process.exit(-1);
-});
+// pool.on("error", (err, client) => {
+//   console.error("Unexpected error on idle client", err);
+//   process.exit(-1);
+// });
 
 // Root route
 app.get("/", (req, res) => {

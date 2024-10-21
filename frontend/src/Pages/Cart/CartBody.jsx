@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { authURL } from "../../Global/Links";
 import CartItems from "./CartItems";
+import { UserContext } from "../../Global/UserContext";
 
 const CartBody = () => {
+  const {notification} = useContext(UserContext)
   const [cartItems, setCartItems] = useState([]);
   const [message, setMessage] = useState();
   const token = localStorage.getItem("token");
@@ -17,17 +19,18 @@ const CartBody = () => {
           },
         });
         const data = await response.json();
-        if (response.ok) {
+        if (response.status === 200) {
           setCartItems(data);
-        } else {
+        } else if (response.status === 201) {
           setMessage(data.message);
+          setCartItems("");
         }
       } catch (err) {
         console.error("Error in fetching cart data", err);
       }
     };
     fetchCartData();
-  }, []);
+  }, [notification]);
   return (
     <div className="py-16">
       {cartItems.length > 0 &&

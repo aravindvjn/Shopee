@@ -45,7 +45,7 @@ const ButtonDiv = ({ id }) => {
           },
         });
         const data = await response.json();
-        if (response.ok) {
+        if (response.status === 200) {
           setIsCartItem(() => {
             return data.find((item) => {
               return item.product_id == id;

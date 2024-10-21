@@ -89,7 +89,7 @@ router.get("/user-data", authenticateToken, async (req, res) => {
       );
       res.status(200).json(response.rows[0]);
     } else {
-      res.status(401).json({ message: "No user logged in" });
+      res.status(401).json({ message: false });
     }
   } catch (err) {
     console.log("Error in fetching user data:", err);

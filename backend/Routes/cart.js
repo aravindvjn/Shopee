@@ -12,7 +12,7 @@ router.get("/", authenticateToken, async (req, res) => {
     if (response.rows.length > 0) {
       res.status(200).json(response.rows);
     } else {
-      res.status(400).json({ message: " No items in the Cart. " });
+      res.status(201).json({ message: " No items in the Cart. " });
     }
   } catch (err) {
     console.error("Error in Fetching cart details");

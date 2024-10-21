@@ -1,11 +1,32 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
-const QtyUpdate = ({ quantity, cart_id }) => {
+import { authURL } from "../../Global/Links";
+import { UserContext } from "../../Global/UserContext";
+const QtyUpdate = ({ quantity, cart_id, id }) => {
+  const { setNotification } = useContext(UserContext);
   const [qty, setQty] = useState(quantity);
+  const token = localStorage.getItem("token");
   const deleteCart = async () => {
-    console.log("Deleted");
+    try {
+      const response = await fetch(authURL + "cart", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ product_id: id }),
+      });
+      const data = await response.json();
+      if (response.status === 200) {
+        setNotification(data.message);
+      } else {
+        setNotification(data.message);
+      }
+    } catch (err) {
+      setNotification("Server not responding");
+    }
   };
   const updateQty = async (action) => {
     if (action === "Increment") {

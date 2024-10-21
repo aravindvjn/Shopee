@@ -3,6 +3,7 @@ import { apiURL } from "../../Global/Links";
 import Products from "../Home/Products";
 
 import QtyUpdate from "./QtyUpdate";
+import Fetching from "../../Components/FetchingComponent/Fetching";
 const CartItems = (props) => {
   const { product_id, quantity, cart_id } = props;
   const [product, setProduct] = useState();
@@ -20,8 +21,14 @@ const CartItems = (props) => {
   }, [product_id]);
   return (
     <div className="px-5 relative mb-4">
-      <Products {...product} />
-      <QtyUpdate {...props} />
+      {product ? (
+        <>
+          <Products {...product} />
+          <QtyUpdate {...props} id={product.id} />
+        </>
+      ) : (
+        <Fetching class1=" h-72 shadow-sm shadow-pink-400 rounded-2xl cursor-pointer" />
+      )}
     </div>
   );
 };

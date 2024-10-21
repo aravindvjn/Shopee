@@ -1,7 +1,7 @@
 import { Router } from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { pool } from "../index.js";
+// import { pool } from "../index.js";
 const router = Router();
 
 //Middle Wares for error handling

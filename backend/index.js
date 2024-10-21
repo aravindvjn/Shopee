@@ -6,7 +6,7 @@ import cors from "cors";
 // import cartRoutes from "./routes/cart.js";
 
 dotenv.config();
-const { Pool } = pkg;
+// const { Pool } = pkg;
 const app = express();
 const PORT = process.env.PORT || 3000;
 

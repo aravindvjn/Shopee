@@ -35,8 +35,8 @@ pool.on("error", (err, client) => {
   process.exit(-1);
 });
 // Routes
-app.use("/", authRoutes);
-app.use("/cart", cartRoutes);
+// app.use("/", authRoutes);
+// app.use("/cart", cartRoutes);
 
 // Root route
 app.get("/", (req, res) => {

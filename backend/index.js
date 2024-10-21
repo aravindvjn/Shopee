@@ -9,15 +9,18 @@ dotenv.config();
 const { Pool } = pkg;
 const app = express();
 const PORT = process.env.PORT || 3000;
-//Middle Wares
+
+// Middleware
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-//database connnection
+
+// Database connection
 export const pool = new Pool({
   connectionString: process.env.DB_URL,
 });
-//connecting
+
+// Connecting to the database
 pool
   .connect()
   .then(() => console.log("Connected to the database successfully!"))
@@ -28,15 +31,22 @@ pool.on("error", (err, client) => {
   process.exit(-1);
 });
 
-//Root route
+// Root route
 app.get("/", (req, res) => {
   res.send("Hai, I am Shopee API");
 });
 
-//routes
+// Routes
 app.use("/", authRoutes);
-app.use("/cart", cartRoutes)
-//Listening
+app.use("/cart", cartRoutes);
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something went wrong!');
+});
+
+// Listening
 app.listen(PORT, () => {
   console.log(`Server listening to ${PORT}`);
 });

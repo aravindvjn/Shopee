@@ -14,16 +14,16 @@ const AccountSection = ({ id }) => {
         <ShoppingCartIcon />
         <p>Cart</p>
       </button>
-      <button className={className}>
-        <Inventory2Icon onClick={() => navigate("/orders")} />
+      <button className={className} onClick={() => navigate("/orders")}>
+        <Inventory2Icon />
         <p>Orders</p>
       </button>
-      <button className={className}>
-        <HouseIcon onClick={() => navigate("/address")} />
+      <button className={className} onClick={() => navigate("/address")}>
+        <HouseIcon />
         <p>Address</p>
       </button>
-      <button className={className}>
-        <EditIcon onClick={() => navigate("/edit-profile")} />
+      <button className={className} onClick={() => navigate("/edit-profile")}>
+        <EditIcon />
         <p>Edit</p>
       </button>
     </div>

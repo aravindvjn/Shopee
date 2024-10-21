@@ -1,8 +1,17 @@
 import { authenticateToken } from "./auth.js";
-import { pool } from "../index.js";
 import { Router } from "express";
+import pkg from "pg";
+const { Pool } = pkg;
 const router = Router();
+import dotenv from "dotenv";
+dotenv.config();
 
+const pool = new Pool({
+  connectionString: process.env.DB_URL,
+  // ssl: {
+  //   rejectUnauthorized: false,
+  // },
+});
 //get cart by user
 router.get("/", authenticateToken, async (req, res) => {
   try {
@@ -53,6 +62,33 @@ router.delete("/", authenticateToken, async (req, res) => {
   } catch (err) {
     console.log("Error in creating cart");
     res.status(500).json({ message: " Sever Issue , Try again later!" });
+  }
+});
+
+//edit quanity of the cart
+router.put("/", authenticateToken, async (req, res) => {
+  const { product_id, quantity } = req.body;
+  if (!product_id || quantity === undefined) {
+    return res
+      .status(400)
+      .json({ message: "Product ID and quantity are required." });
+  }
+
+  try {
+    const response = await pool.query(
+      "UPDATE cart SET quantity = $1 WHERE user_id = $2 AND product_id = $3 RETURNING *",
+      [quantity, req.user.id, product_id]
+    );
+    if (response.rows.length > 0) {
+      res.status(200).json({
+        message: "Cart updated successfully",
+      });
+    } else {
+      res.status(404).json({ message: "Product not found in the cart." });
+    }
+  } catch (err) {
+    console.error("Error updating product in cart:", err);
+    res.status(500).json({ message: "Server issue, please try again later!" });
   }
 });
 export default router;

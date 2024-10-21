@@ -7,8 +7,18 @@ const ButtonDiv = ({ id }) => {
   const { user, setNotification } = useContext(UserContext);
   const [isCartItem, setIsCartItem] = useState(null);
   const token = localStorage.getItem("token");
+
+  const buyHandler = () => {
+    if (!user) {
+      setNotification("You have to login first.");
+      return;
+    }
+    setNotification("Buy feature will come soon.");
+  };
+
   const updateCart = async (action) => {
     if (!user) {
+      setNotification("You have to login to add cart.");
       return;
     }
     const method = action === "Add to Cart" ? "POST" : "DELETE";
@@ -64,7 +74,7 @@ const ButtonDiv = ({ id }) => {
   }, []);
   return (
     <div className="mb-5">
-      <Button text="Buy" />
+      <Button text="Buy" click={buyHandler} />
       {isCartItem !== null || !user ? (
         isCartItem ? (
           <Button text="Remove from Cart" click={updateCart} />

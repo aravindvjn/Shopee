@@ -28,12 +28,38 @@ const QtyUpdate = ({ quantity, cart_id, id }) => {
       setNotification("Server not responding");
     }
   };
-  const updateQty = async (action) => {
+  const updateQty = (action) => {
     if (action === "Increment") {
-      setQty((prev) => prev + 1);
+      setQty((prev) => {
+        updateQtyInDB(prev + 1);
+        return prev + 1;
+      });
     } else {
-      setQty((prev) => prev - 1);
+      setQty((prev) => {
+        updateQtyInDB(prev - 1);
+        return prev - 1;
+      });
     }
+    const updateQtyInDB = async (newQuantity) => {
+      try {
+        const response = await fetch(authURL + "cart", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ product_id: id, quantity: newQuantity }),
+        });
+        const data = await response.json();
+        if (response.status.ok) {
+          // setNotification(data.message);
+        } else {
+          setNotification(data.message);
+        }
+      } catch (err) {
+        setNotification("Server not responding");
+      }
+    };
   };
   return (
     <div className="flex gap-4 bg-pink-700 p-1 px-2 rounded-md absolute bottom-3 right-8 text-white items-center">

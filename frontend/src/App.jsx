@@ -12,14 +12,21 @@ import Cart from "./Pages/Cart/Cart";
 import { useContext } from "react";
 import PleaseLogin from "./Components/Warnings/PleaseLogin";
 import Notification from "./Components/Notification/Notification";
+import Address from "./Pages/Address/Address";
+import EditAccount from "./Pages/EditAccount/EditAccount";
 AOS.init();
 function App() {
   const location = useLocation();
-  const { user, notification,setNotification } = useContext(UserContext);
+  const { user, notification, setNotification } = useContext(UserContext);
   const noFooterPaths = ["login", "register"];
   return (
     <>
-      {notification && <Notification notification={notification} setNotification={setNotification} />}
+      {notification && (
+        <Notification
+          notification={notification}
+          setNotification={setNotification}
+        />
+      )}
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/product-details/:id" element={<ProductDetails />} />
@@ -28,6 +35,11 @@ function App() {
         <Route path="/account" element={user ? <Account /> : <PleaseLogin />} />
         <Route path="/register" element={<Auth />} />
         <Route path="/cart" element={user ? <Cart /> : <PleaseLogin />} />
+        <Route path="/address" element={user ? <Address /> : <PleaseLogin />} />
+        <Route
+          path="/edit-profile"
+          element={user ? <EditAccount /> : <PleaseLogin />}
+        />
         <Route path="*" element={<Home />} />
       </Routes>
       {!noFooterPaths.includes(location.pathname.replace(/\//g, "")) && (

@@ -3,8 +3,8 @@ import dotenv from "dotenv";
 import pkg from "pg";
 const { Pool } = pkg;
 import cors from "cors";
-// import authRoutes from "./routes/auth.js";
-// import cartRoutes from "./routes/cart.js";
+import authRoutes from "./routes/auth.js";
+import cartRoutes from "./routes/cart.js";
 
 dotenv.config();
 const app = express();
@@ -18,9 +18,9 @@ app.use(express.urlencoded({ extended: true }));
 // Database connection
 const pool = new Pool({
   connectionString: process.env.DB_URL,
-  ssl: {
-    rejectUnauthorized: false,
-  },
+  // ssl: {
+  //   rejectUnauthorized: false,
+  // },
 });
 
 // Root route
@@ -29,8 +29,8 @@ app.get("/", (req, res) => {
 });
 
 // Routes
-// app.use("/", authRoutes);
-// app.use("/cart", cartRoutes);
+app.use("/", authRoutes);
+app.use("/cart", cartRoutes);
 
 // Error handling middleware
 // app.use((err, req, res, next) => {

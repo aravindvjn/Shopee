@@ -1,8 +1,19 @@
 import { Router } from "express";
 import bcrypt from "bcrypt";
+import pkg from "pg";
+const { Pool } = pkg;
 import jwt from "jsonwebtoken";
-import { pool } from "../index.js";
 const router = Router();
+import dotenv from "dotenv";
+dotenv.config();
+
+//Connection
+const pool = new Pool({
+  connectionString: process.env.DB_URL,
+  // ssl: {
+  //   rejectUnauthorized: false,
+  // },
+});
 
 //Middle Wares for error handling
 router.use((err, req, res, next) => {
@@ -96,4 +107,35 @@ router.get("/user-data", authenticateToken, async (req, res) => {
   }
 });
 
+//update password
+router.put("/update-password", authenticateToken, async (req, res) => {
+  try {
+    const { password, oldPassword } = req.body;
+    const result = await pool.query(
+      "SELECT * FROM users WHERE email = $1 AND id= $2",
+      [req.user.email, req.user.id]
+    );
+    const user = result.rows[0];
+    console.log(user)
+    if (user && (await bcrypt.compare(oldPassword, user.password))) {
+      const hashedPassword = await bcrypt.hash(password, 10);
+      const response = await pool.query(
+        "UPDATE users SET password = $1 WHERE id = $2 AND email = $3 RETURNING id",
+        [hashedPassword, req.user.id, req.user.email]
+      );
+      if (response.rows.length > 0) {
+        res.status(200).json({ message: "Password changed!" });
+      } else {
+        res.status(400).json({ message: "Failed to change Password!" });
+      }
+    } else if (user) {
+      res.status(401).json({ message: "Current password is incorrect." });
+    } else {
+      res.status(401).json({ message: "Invalid Inputs" });
+    }
+  } catch (err) {
+    console.error("Error in registering: ", err);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
 export default router;

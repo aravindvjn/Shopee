@@ -1,24 +1,15 @@
-
 {
-"version": 2,
-"builds": [
-{
-"src": "index.js",
-"use": "@vercel/static-build"
-}
-],
-"routes": [
-{
-"src": "/api/(.*)",
-"dest": "index.js"
-},
-{
-"src": "/api/auth",
-"dest": "Routes/auth.js"
-},
-{
-"src": "/api/cart",
-"dest": "Routes/cart.js"
-}
-]
+  "version": 2,
+  "builds": [
+    {
+      "src": "index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "index.js"
+    }
+  ]
 }

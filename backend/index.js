@@ -37,14 +37,14 @@ app.get("/", (req, res) => {
 });
 
 // Routes
-// app.use("/", authRoutes);
-// app.use("/cart", cartRoutes);
+app.use("/", authRoutes);
+app.use("/cart", cartRoutes);
 
 // Error handling middleware
-// app.use((err, req, res, next) => {
-//   console.error(err.stack);
-//   res.status(500).send("Something went wrong!");
-// });
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Something went wrong!");
+});
 
 // Listening
 app.listen(PORT, () => {

@@ -21,10 +21,10 @@ export const pool = new Pool({
 });
 
 // Connecting to the database
-pool
-  .connect()
-  .then(() => console.log("Connected to the database successfully!"))
-  .catch((err) => console.error("Connection error", err.stack));
+// pool
+//   .connect()
+//   .then(() => console.log("Connected to the database successfully!"))
+//   .catch((err) => console.error("Connection error", err.stack));
 
 // pool.on("error", (err, client) => {
 //   console.error("Unexpected error on idle client", err);

@@ -1,5 +1,5 @@
 import { authenticateToken } from "./auth.js";
-// import { pool } from "../index.js";
+import { pool } from "../index.js";
 import { Router } from "express";
 const router = Router();
 

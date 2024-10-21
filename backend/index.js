@@ -2,8 +2,8 @@ import express from "express";
 import dotenv from "dotenv";
 import pkg from "pg";
 import cors from "cors";
-// import authRoutes from "./routes/auth.js";
-// import cartRoutes from "./routes/cart.js";
+import authRoutes from "./routes/auth.js";
+import cartRoutes from "./routes/cart.js";
 
 dotenv.config();
 const { Pool } = pkg;
@@ -30,14 +30,15 @@ pool.on("error", (err, client) => {
   console.error("Unexpected error on idle client", err);
   process.exit(-1);
 });
-// Routes
-// app.use("/", authRoutes);
-// app.use("/cart", cartRoutes);
 
 // Root route
 app.get("/", (req, res) => {
   res.send("Hai, I am Shopee API");
 });
+
+// Routes
+app.use("/", authRoutes);
+app.use("/cart", cartRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {

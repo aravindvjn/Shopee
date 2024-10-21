@@ -16,15 +16,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Database connection
-export const pool = new Pool({
-  connectionString: process.env.DB_URL,
-});
+// export const pool = new Pool({
+//   connectionString: process.env.DB_URL,
+// });
 
 // Connecting to the database
-pool
-  .connect()
-  .then(() => console.log("Connected to the database successfully!"))
-  .catch((err) => console.error("Connection error", err.stack));
+// pool
+//   .connect()
+//   .then(() => console.log("Connected to the database successfully!"))
+//   .catch((err) => console.error("Connection error", err.stack));
 
 // pool.on("error", (err, client) => {
 //   console.error("Unexpected error on idle client", err);

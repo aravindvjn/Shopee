@@ -46,7 +46,7 @@ const Form = ({ page = "Submit", setMessage, setLoading }) => {
             navigate("/");
             setLoading(false);
           } else {
-            setMessage("Registration failed: " + data.message);
+            setMessage(data.message);
             setLoading(false);
           }
         }
@@ -85,7 +85,7 @@ const Form = ({ page = "Submit", setMessage, setLoading }) => {
             navigate("/");
             setLoading(false);
           } else {
-            setMessage("Registration failed: " + data.message);
+            setMessage(data.message);
             setLoading(false);
           }
         }

@@ -1,0 +1,21 @@
+.notification {
+    animation: pullDown 3s forwards;
+}
+
+@keyframes pullDown {
+    0% {
+        top: -100%
+    }
+
+    30% {
+        top: 4px
+    }
+
+    80% {
+        top: 4px
+    }
+
+    100% {
+        top: -100%
+    }
+}

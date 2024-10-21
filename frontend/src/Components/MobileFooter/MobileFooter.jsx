@@ -11,6 +11,9 @@ import { UserContext } from "../../Global/UserContext";
 const MobileFooter = () => {
   const { setUser } = useContext(UserContext);
   const token = localStorage.getItem("token");
+  const location = useLocation();
+  const { pathname } = location;
+  const navigate = useNavigate();
   useEffect(() => {
     if (token) {
       fetchUserData(token)
@@ -21,10 +24,7 @@ const MobileFooter = () => {
           console.error("Error in fetching data", err);
         });
     }
-  }, [token]);
-  const location = useLocation();
-  const { pathname } = location;
-  const navigate = useNavigate();
+  }, [token,pathname]);
   return (
     <div className="fixed bottom-0 left-0 right-0 h-16 mt-3 border border-t-2 border-opacity-5 flex justify-around items-center text-sm bg-white w-full z-50">
       <div

@@ -1,6 +1,6 @@
 import React from "react";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import LocalOfferIcon from "@mui/icons-material/LocalOffer";
+import Inventory2Icon from "@mui/icons-material/Inventory2";
 import HouseIcon from "@mui/icons-material/House";
 import EditIcon from "@mui/icons-material/Edit";
 import { useNavigate } from "react-router-dom";
@@ -15,7 +15,7 @@ const AccountSection = ({ id }) => {
         <p>Cart</p>
       </button>
       <button className={className}>
-        <LocalOfferIcon onClick={() => navigate("/orders")} />
+        <Inventory2Icon onClick={() => navigate("/orders")} />
         <p>Orders</p>
       </button>
       <button className={className}>

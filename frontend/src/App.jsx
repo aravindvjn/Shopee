@@ -11,13 +11,15 @@ import UserProvider, { UserContext } from "./Global/UserContext";
 import Cart from "./Pages/Cart/Cart";
 import { useContext } from "react";
 import PleaseLogin from "./Components/Warnings/PleaseLogin";
+import Notification from "./Components/Notification/Notification";
 AOS.init();
 function App() {
   const location = useLocation();
-  const { user } = useContext(UserContext);
+  const { user, notification,setNotification } = useContext(UserContext);
   const noFooterPaths = ["login", "register"];
   return (
     <>
+      {notification && <Notification notification={notification} setNotification={setNotification} />}
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/product-details/:id" element={<ProductDetails />} />

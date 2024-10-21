@@ -4,7 +4,7 @@ const Logo = () => {
   return (
     <>
       <ShoppingBagIcon data-aos="zoom-out" fontSize="large" className=" text-pink-600" />
-      <h1 data-aos="zoom-out" className="text-pink-600 text-2xl font-bold">Shopee</h1>
+      <h1 data-aos="zoom-out" className="text-pink-600 text-2xl font-bold">PinkShop</h1>
     </>
   );
 };

@@ -16,9 +16,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Database connection
-export const pool = new Pool({
-  connectionString: process.env.DB_URL,
-});
+// export const pool = new Pool({
+//   connectionString: process.env.DB_URL,
+// });
 
 // Connecting to the database
 // pool

@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import pkg from "pg";
 import cors from "cors";
 import authRoutes from "./Routes/auth.js";
-import cartRoutes from './Routes/cart.js';
+import cartRoutes from "./Routes/cart.js";
 
 dotenv.config();
 const { Pool } = pkg;
@@ -11,9 +11,11 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(cors({
-  origin: process.env.FRONT_END_URL,
-}));
+app.use(
+  cors({
+    origin: process.env.FRONT_END_URL,
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -32,20 +34,19 @@ pool.on("error", (err, client) => {
   console.error("Unexpected error on idle client", err);
   process.exit(-1);
 });
+// Routes
+app.use("/", authRoutes);
+app.use("/cart", cartRoutes);
 
 // Root route
 app.get("/", (req, res) => {
   res.send("Hai, I am Shopee API");
 });
 
-// Routes
-app.use("/", authRoutes);
-app.use("/cart", cartRoutes);
-
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).send('Something went wrong!');
+  res.status(500).send("Something went wrong!");
 });
 
 // Listening

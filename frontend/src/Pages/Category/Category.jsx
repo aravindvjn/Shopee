@@ -23,7 +23,7 @@ const Category = () => {
   return (
     <>
       <HeaderScroll />
-      <div className="grid grid-cols-2 gap-5 bg-pink-50 p-5 pt-16 sm:p-10 lg:p-16 sm:pt-20 lg:pt-24 sm:grid-cols-3 pb-24 min-h-screen">
+      <div className="grid grid-cols-2 gap-5 bg-pink-50 p-5 pt-16 sm:p-10 lg:p-16 sm:pt-20 lg:pt-24 sm:grid-cols-3 pb-24 min-h-screen  lg:pb-24">
         {products.length > 0
           ? products.map((product) => {
               return <Products key={product.id} {...product} width={"full"} />;

@@ -9,7 +9,7 @@ const AccountSection = ({ id }) => {
     "px-2 py-3 border font-semibold rounded-full flex justify-center items-center border-pink-400 bg-pink-600 text-white gap-2";
   const navigate = useNavigate();
   return (
-    <div className="grid grid-cols-2 gap-5 mb-5">
+    <div className="grid grid-cols-2 gap-5 mb-5 sm:grid-cols-3 lg:grid-cols-4 sm:pt-5">
       <button className={className} onClick={() => navigate("/cart")}>
         <ShoppingCartIcon />
         <p>Cart</p>
@@ -20,7 +20,7 @@ const AccountSection = ({ id }) => {
       </button>
       <button className={className} onClick={() => navigate("/address")}>
         <HouseIcon />
-        <p>Address</p>
+        <p>Addresses</p>
       </button>
       <button className={className} onClick={() => navigate("/edit-profile")}>
         <EditIcon />

@@ -9,7 +9,7 @@ const ScrollProducts = ({ products }) => {
     <div className="flex overflow-x-scroll gap-5 p-3 px-5 scrollbar">
       {products.length > 0 &&
         products.map((product) => {
-          return <Products key={product.id} {...product} />;
+          return <Products key={product.id} {...product} width={52} />;
         })}
       {products.length > 4 && (
         <div

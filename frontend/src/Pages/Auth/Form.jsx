@@ -98,7 +98,7 @@ const Form = ({ page = "Submit", setMessage, setLoading }) => {
     <div>
       <form
         onSubmit={submitHandler}
-        className="flex flex-col p-10 min-h-screen justify-center"
+        className="flex flex-col  p-10 min-h-screen justify-center m-auto sm:w-2/3 lg:w-1/3 "
         action=""
       >
         <div className="flex justify-center items-center flex-col mb-3">
@@ -106,7 +106,7 @@ const Form = ({ page = "Submit", setMessage, setLoading }) => {
             <Logo />
           </div>
           <h1 className="text-pink-600 font-bold">
-            {page !== "login" ? "Create an Account" : "Login"}
+            {page !== "login" ? "Create an Account" : "Login Here"}
           </h1>
         </div>
 

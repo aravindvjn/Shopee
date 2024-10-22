@@ -6,7 +6,7 @@ import LimitProduct from "../../Home/LimitProduct";
 
 const RelatedProducts = ({ category }) => {
   return (
-<div>
+<div className="sm:px-10">
     {category && <LimitProduct newName={"Related Products"} category={category} />}
 </div>
   );

@@ -81,7 +81,7 @@ router.put("/", authenticateToken, async (req, res) => {
     );
     if (response.rows.length > 0) {
       res.status(200).json({
-        message: "Cart updated successfully",
+        message: "Cart Updated.",
       });
     } else {
       res.status(404).json({ message: "Product not found in the cart." });

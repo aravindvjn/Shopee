@@ -11,7 +11,7 @@ const UserProfile = ({ name, email }) => {
 
 const Names = ({ text, value }) => {
   return (
-    <div>
+    <div className="sm:w-2/3 lg:w-1/3 pb-3 sm:pb-5">
       <p className="shadow-sm rounded-md border border-pink-400 min-w-1/2 mt-3 p-2">
         <em>{text} : </em> <span className="font-semibold">{value}</span>
       </p>

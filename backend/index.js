@@ -5,6 +5,7 @@ const { Pool } = pkg;
 import cors from "cors";
 import authRoutes from "./routes/auth.js";
 import cartRoutes from "./routes/cart.js";
+import addressRoutes from './routes/address.js'
 
 dotenv.config();
 const app = express();
@@ -31,6 +32,7 @@ app.get("/", (req, res) => {
 // Routes
 app.use("/", authRoutes);
 app.use("/cart", cartRoutes);
+app.use("/addresses", addressRoutes);
 
 // Error handling middleware
 // app.use((err, req, res, next) => {

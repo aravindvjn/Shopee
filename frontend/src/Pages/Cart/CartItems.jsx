@@ -20,11 +20,11 @@ const CartItems = (props) => {
     fetchProduct();
   }, [product_id]);
   return (
-    <div className="px-5 relative mb-4">
+    <div className="px-5 relative mb-4 sm:min-w-full">
       {product ? (
         <>
-          <Products {...product} />
-          <QtyUpdate {...props} id={product.id} />
+          <Products {...product} class1="sm:min-w-full"/>
+          <QtyUpdate {...props} id={product.id}  />
         </>
       ) : (
         <Fetching class1=" h-72 shadow-sm shadow-pink-400 rounded-2xl cursor-pointer" />

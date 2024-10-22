@@ -21,7 +21,7 @@ const HeaderScroll = () => {
     fetchCategory();
   }, []);
   return (
-    <div className="fixed z-10 right-0 left-0 top-0 h-12 flex items-center p-5 bg-pink-700 overflow-x-scroll scrollbar-none gap-2">
+    <div className="fixed z-10 right-0 left-0 top-0 h-12 flex items-center p-5 bg-pink-700 overflow-x-scroll scrollbar-none gap-2 sm:pl-16">
       {categories.length > 0 &&
         categories.map((category,index) => {
           return <SingleCategory key={index} cate={category} />;

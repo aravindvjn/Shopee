@@ -10,7 +10,7 @@ const SingleCategory = ({ cate = "electronics" }) => {
         navigate("/category/" + cate);
         window.scrollTo(0, 0);
       }}
-      className={`capitalize whitespace-nowrap shadow-sm shadow-pink-700 text-white border border-y-white px-3 py-1 rounded-lg ${
+      className={`capitalize whitespace-nowrap shadow-sm shadow-pink-700 text-white border border-y-white px-3 py-1 rounded-lg cursor-pointer ${
         cate === decodeURIComponent(category) ? "bg-pink-900" : ""
       }`}
     >

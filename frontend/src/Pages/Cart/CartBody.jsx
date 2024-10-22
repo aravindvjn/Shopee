@@ -32,7 +32,7 @@ const CartBody = () => {
     fetchCartData();
   }, [notification]);
   return (
-    <div className="py-16">
+    <div className="py-16 sm:grid sm:grid-cols-2 lg:grid-cols-3">
       {cartItems.length > 0 &&
         cartItems.map((item) => {
           return <CartItems key={item.cart_id} {...item} />;

@@ -14,6 +14,7 @@ import PleaseLogin from "./Components/Warnings/PleaseLogin";
 import Notification from "./Components/Notification/Notification";
 import Address from "./Pages/Address/Address";
 import EditAccount from "./Pages/EditAccount/EditAccount";
+import AddAddress from "./Pages/Address/AddAddress/AddAddress";
 AOS.init();
 function App() {
   const location = useLocation();
@@ -39,6 +40,10 @@ function App() {
         <Route
           path="/edit-profile"
           element={user ? <EditAccount /> : <PleaseLogin />}
+        />
+        <Route
+          path="/add-address"
+          element={user ? <AddAddress /> : <PleaseLogin />}
         />
         <Route path="*" element={<Home />} />
       </Routes>

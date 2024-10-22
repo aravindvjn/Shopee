@@ -64,10 +64,10 @@ const ChangePassword = ({ setEditPassword }) => {
     <div className="min-h-screen fixed bg-pink-50">
       <div className="flex justify-center items-center text-left w-screen p-10 relative">
         {message && <PopUpWarning message={message} setPopUp={setMessage} />}
-        <form onSubmit={submitHandler} className="flex flex-col w-full gap-2">
+        <form onSubmit={submitHandler} className="flex flex-col w-full gap-2 sm:w-2/3 lg:w-1/3">
           <CloseIcon
             onClick={() => setEditPassword(false)}
-            className="absolute right-4 top-4"
+            className="absolute right-4 top-4 cursor-pointer"
           />
           <Input
             type="password"

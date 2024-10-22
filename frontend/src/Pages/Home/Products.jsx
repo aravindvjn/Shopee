@@ -10,12 +10,13 @@ const Products = ({
   title = "Unknown",
   price = false,
   rating = false,
+  class1=''
 }) => {
   const navigate = useNavigate();
   return (
     <div data-aos="fade-in"
       key={id} 
-      className={`min-w-${width} max-w-${width} bg-white p-5 shadow-sm shadow-pink-400 rounded-2xl cursor-pointer sm:hover:bg-gray-100`}
+      className={`min-w-${width} max-w-${width} ${class1} bg-white p-5 shadow-sm shadow-pink-400 rounded-2xl cursor-pointer sm:hover:bg-gray-100 lg:w-52`}
       onClick={() => {
         navigate("/product-details/" + id);
         window.scrollTo(0, 0);

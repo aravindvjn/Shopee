@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { apiURL } from "../../Global/Links";
 import Products from "../Home/Products";
-
 import QtyUpdate from "./QtyUpdate";
 import Fetching from "../../Components/FetchingComponent/Fetching";
 const CartItems = (props) => {

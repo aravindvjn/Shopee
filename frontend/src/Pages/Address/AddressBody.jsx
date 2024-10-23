@@ -5,7 +5,7 @@ import SingleAddress from "./SingleAddress";
 
 const AddressBody = () => {
   const [addresses, setAddresses] = useState([]);
-  const { setNotification } = useContext(UserContext);
+  const { setNotification,notification } = useContext(UserContext);
   const [message,setMessage] = useState()
   const token = localStorage.getItem("token");
   useEffect(() => {
@@ -29,7 +29,7 @@ const AddressBody = () => {
       }
     };
     fetchAddresses();
-  }, []);
+  }, [notification]);
   return (
     <div className="grid sm:grid-cols-2 lg:grid-cols-3">
       {addresses.length > 0 ?

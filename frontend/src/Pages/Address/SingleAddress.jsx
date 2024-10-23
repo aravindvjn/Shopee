@@ -4,6 +4,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import { authURL } from "../../Global/Links";
 import { useContext } from "react";
 import { UserContext } from "../../Global/UserContext";
+import { useNavigate } from "react-router-dom";
 const SingleAddress = ({
   address_id = "",
   city = "Unavailable",
@@ -16,6 +17,7 @@ const SingleAddress = ({
   state = "Unavailable",
   street_address = "Unavailable",
 }) => {
+  const navigate = useNavigate();
   const { setNotification } = useContext(UserContext);
   const token = localStorage.getItem("token");
   const deleteAddress = async () => {
@@ -44,7 +46,7 @@ const SingleAddress = ({
       className="border border-pink-700 p-5 rounded-md mt-2 bg-white relative"
     >
       <div className="absolute right-4 top-4">
-        <EditIcon />
+        <EditIcon onClick={() => navigate("/edit-address/" + address_id)} />
         <DeleteIcon onClick={deleteAddress} />
       </div>
       <h1 className="font-bold">{recipient_name}</h1>

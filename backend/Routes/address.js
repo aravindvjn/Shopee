@@ -31,6 +31,24 @@ router.get("/", authenticateToken, async (req, res) => {
     res.status(500).json({ message: "Server not responding." });
   }
 });
+//getting address by ID
+router.get("/:address_id", authenticateToken, async (req, res) => {
+  try {
+    const { address_id } = req.params;
+    const response = await pool.query(
+      "SELECT * FROM delivery_address WHERE user_id=$1 AND address_id=$2",
+      [req.user.id, address_id]
+    );
+    if (response.rows.length > 0) {
+      res.status(200).json(response.rows[0]);
+    } else {
+      res.status(201).json({ message: "Something Went Wrong." });
+    }
+  } catch (err) {
+    console.error("Error in fetching addessess");
+    res.status(500).json({ message: "Server not responding." });
+  }
+});
 
 //adding addresses
 router.post("/", authenticateToken, async (req, res) => {
@@ -90,7 +108,6 @@ router.delete("/", authenticateToken, async (req, res) => {
 });
 
 //Edit address
-
 router.put("/", authenticateToken, async (req, res) => {
   const {
     address_id,

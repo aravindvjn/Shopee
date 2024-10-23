@@ -3,9 +3,9 @@ import dotenv from "dotenv";
 import pkg from "pg";
 const { Pool } = pkg;
 import cors from "cors";
-import authRoutes from "./routes/auth.js";
-import cartRoutes from "./routes/cart.js";
-import addressRoutes from "./routes/address.js";
+const authRoutes = require('./routes/auth');      // No need for .js
+const cartRoutes = require('./routes/cart');      // No need for .js
+const addressRoutes = require('./routes/address');  // No need for .js
 
 dotenv.config();
 const app = express();

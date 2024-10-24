@@ -78,7 +78,7 @@ const AddressForm = ({ method = "POST", address_id = "" }) => {
             },
           });
           const data = await response.json();
-          if (response.status === 200) {
+          if (response.ok) {
             setInput({
               name: data.recipient_name,
               phone_number: data.phone_number,

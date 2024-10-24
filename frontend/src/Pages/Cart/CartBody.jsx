@@ -4,7 +4,7 @@ import CartItems from "./CartItems";
 import { UserContext } from "../../Global/UserContext";
 
 const CartBody = () => {
-  const {notification} = useContext(UserContext)
+  const { notification } = useContext(UserContext);
   const [cartItems, setCartItems] = useState([]);
   const [message, setMessage] = useState();
   const token = localStorage.getItem("token");
@@ -19,9 +19,9 @@ const CartBody = () => {
           },
         });
         const data = await response.json();
-        if (response.status === 200) {
+        if (response.ok) {
           setCartItems(data);
-        } else if (response.status === 201) {
+        } else {
           setMessage(data.message);
           setCartItems("");
         }

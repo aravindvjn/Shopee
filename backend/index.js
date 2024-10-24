@@ -3,9 +3,9 @@ import dotenv from "dotenv";
 import pkg from "pg";
 const { Pool } = pkg;
 import cors from "cors";
-import authRoutes from './routes/auth.js';  // Import the routes (include .js)
-import cartRoutes from './routes/cart.js';  // Import the routes (include .js)
-import addressRoutes from './routes/address.js';  // Import the routes (include .js)
+import authRoutes from './Routes/auth.js';
+import cartRoutes from './Routes/cart.js';  
+import addressRoutes from './Routes/address.js';  
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;

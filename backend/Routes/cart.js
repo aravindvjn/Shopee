@@ -1,4 +1,4 @@
-import { authenticateToken } from "./auth.js";
+import { authenticateToken } from "./auth";
 import { Router } from "express";
 import pkg from "pg";
 const { Pool } = pkg;

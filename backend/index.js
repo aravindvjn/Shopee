@@ -3,9 +3,9 @@ import dotenv from "dotenv";
 import pkg from "pg";
 const { Pool } = pkg;
 import cors from "cors";
-import authRoutes from './Routes/auth.js';
-import cartRoutes from './Routes/cart.js';  
-import addressRoutes from './Routes/address.js';  
+import authRoutes from "./Routes/auth";
+import cartRoutes from "./Routes/cart";
+import addressRoutes from "./Routes/address";
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(
   cors({
-    origin: "https://shopee-drab.vercel.app", // Replace with your frontend domain
+    origin: process.env.FRONT_END_URL,
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
